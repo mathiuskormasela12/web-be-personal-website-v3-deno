@@ -1,5 +1,40 @@
 {
+  "compilerOptions": {
+    "strict": true
+  },
+  "unstable": ["byonm"],
   "tasks": {
-    "start": "deno run --allow-net main.ts"
+    "start": "deno run --check --allow-net --allow-env --env --watch ./src/main.ts",
+    "lint:fix": "deno fmt && deno lint",
+    "db:migrate": "pnpm drizzle-kit push:pg"
+  },
+  "imports": {
+    "hono/": "https://deno.land/x/hono@v4.3.1/",
+    "zod": "https://deno.land/x/zod@v3.23.6/mod.ts",
+    "bcrypt": "https://deno.land/x/bcrypt@v0.4.1/mod.ts",
+    "@/config": "./src/config/index.ts",
+    "@/helpers": "./src/helpers/index.ts",
+    "@/controllers": "./src/controllers/index.ts",
+    "@/services": "./src/services/index.ts",
+    "@/middlewares": "./src/middlewares/index.ts",
+    "@/types": "./src/types/index.ts",
+    "@/models": "./src/models/index.ts"
+  },
+  "lint": {
+    "include": ["src/", "."],
+    "exclude": ["node_modules/"],
+    "rules": {
+      "tags": ["recommended"]
+    }
+  },
+  "fmt": {
+    "include": ["src/", "."],
+    "exclude": ["node_modules/"],
+    "indentWidth": 2,
+    "lineWidth": 80,
+    "useTabs": false,
+    "singleQuote": true,
+    "semiColons": true,
+    "proseWrap": "always"
   }
 }
