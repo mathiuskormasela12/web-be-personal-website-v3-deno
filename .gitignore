@@ -1,3 +1,4 @@
 /node_modules
 .env*
 !.env.example
+personal-website-api-v3

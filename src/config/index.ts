@@ -1,14 +1,16 @@
-import process from 'node:process';
+import { load } from 'https://deno.land/std/dotenv/mod.ts';
+
+const env = await load();
 
 export default {
-  PORT: Number(process.env.SERVICE_APP_PORT)!,
-  CORS_WHITELIST: process.env.SERVICE_APP_CORS_WHITELIST?.split(',') || [],
-  SECRET_KEY: process.env.SERVICE_APP_SECERET_KEY!,
+  PORT: Number(env.SERVICE_APP_PORT)!,
+  CORS_WHITELIST: env.SERVICE_APP_CORS_WHITELIST?.split(',') || [],
+  SECRET_KEY: env.SERVICE_APP_SECERET_KEY!,
   DATABASE: {
-    HOST: process.env.SERVICE_APP_DB_HOST!,
-    PORT: Number(process.env.SERVICE_APP_DB_PORT!),
-    USER: process.env.SERVICE_APP_DB_USER!,
-    PASSWORD: process.env.SERVICE_APP_DB_PASSWORD!,
-    DB_NAME: process.env.SERVICE_APP_DB_NAME!,
+    HOST: env.SERVICE_APP_DB_HOST!,
+    PORT: Number(env.SERVICE_APP_DB_PORT!),
+    USER: env.SERVICE_APP_DB_USER!,
+    PASSWORD: env.SERVICE_APP_DB_PASSWORD!,
+    DB_NAME: env.SERVICE_APP_DB_NAME!,
   },
 };

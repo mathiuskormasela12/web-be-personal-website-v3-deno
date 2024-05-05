@@ -1,0 +1,29 @@
+version: "3.8"
+
+networks:
+  web-be-personal-website-v3-network:
+    name: web-be-personal-website-v3-network
+    driver: bridge
+
+volumes:
+   web-be-personal-website-v3-volume:
+    name: web-be-personal-website-v3-volume
+
+services:
+  web-be-personal-website-v3-database:
+   container_name: web-be-personal-website-v3-database
+   image: postgres:latest
+   environment:
+    POSTGRES_USER: root
+    POSTGRES_PASSWORD: root
+    POSTGRES_DB: web-be-personal-website-v3
+   ports:
+     - protocol: tcp
+       target: 5432
+       published: 4321
+   networks:
+    - web-be-personal-website-v3-network
+   volumes:
+     - type: volume
+       source: web-be-personal-website-v3-volume
+       target: /var/lib/postgresql/data

@@ -4,9 +4,10 @@
   },
   "unstable": ["byonm"],
   "tasks": {
-    "start": "deno run --check --allow-net --allow-env --env --watch ./src/main.ts",
+    "start": "deno run --check --allow-net --allow-env --watch ./src/main.ts",
     "lint:fix": "deno fmt && deno lint",
-    "db:migrate": "pnpm drizzle-kit push:pg"
+    "db:migrate": "pnpm drizzle-kit push:pg",
+    "build": "deno compile --check --allow-net --allow-read --allow-env --include https://deno.land/x/bcrypt@v0.4.1/src/worker.ts --output personal-website-api-v3 ./src/main.ts"
   },
   "imports": {
     "hono/": "https://deno.land/x/hono@v4.3.1/",
@@ -22,14 +23,14 @@
   },
   "lint": {
     "include": ["src/", "."],
-    "exclude": ["node_modules/"],
+    "exclude": ["node_modules/", "docker-compose.yaml"],
     "rules": {
       "tags": ["recommended"]
     }
   },
   "fmt": {
     "include": ["src/", "."],
-    "exclude": ["node_modules/"],
+    "exclude": ["node_modules/", "docker-compose.yaml"],
     "indentWidth": 2,
     "lineWidth": 80,
     "useTabs": false,

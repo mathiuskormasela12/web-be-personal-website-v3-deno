@@ -1,6 +1,7 @@
 {
   "version": "3",
   "redirects": {
+    "https://deno.land/std/dotenv/mod.ts": "https://deno.land/std@0.224.0/dotenv/mod.ts",
     "https://deno.land/x/bcrypt/mod.ts": "https://deno.land/x/bcrypt@v0.4.1/mod.ts",
     "https://deno.land/x/hono/middleware.ts": "https://deno.land/x/hono@v4.3.1/middleware.ts",
     "https://deno.land/x/zod": "https://deno.land/x/zod@v3.23.6",
@@ -121,7 +122,6 @@
         "npm:drizzle-kit@^0.20.17",
         "npm:drizzle-orm@^0.30.10",
         "npm:pg@^8.11.5",
-        "npm:tsx@^4.9.1",
         "npm:winston@^3.13.0"
       ]
     }
